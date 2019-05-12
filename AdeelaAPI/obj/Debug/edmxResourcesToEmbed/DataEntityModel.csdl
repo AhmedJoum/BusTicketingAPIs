@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdeelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AdeelaEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="UserInsert" ReturnType="Collection(AdeelaModel.UserInsert_Result)">
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="TypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserLoginCheck" ReturnType="Collection(Int32)">
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserUpdateType">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="TypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserLogin" ReturnType="Collection(Int32)">
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AgencyInsert" ReturnType="Collection(AdeelaModel.AgencyInsert_Result)">
+      <Parameter Name="AgencyName" Mode="In" Type="String" />
+      <Parameter Name="AgencyNameArabic" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AgencyRouteInsert" ReturnType="Collection(Decimal)">
+      <Parameter Name="AgencyID" Mode="In" Type="Int32" />
+      <Parameter Name="RouteID" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="TravelTime" Mode="In" Type="String" />
+      <Parameter Name="AvailableTickets" Mode="In" Type="Int32" />
+      <Parameter Name="Price" Mode="In" Type="Double" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="IssuedTickets" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AgencyRoutSelect" ReturnType="Collection(AdeelaModel.AgencyRoutSelect_Result)" />
+    <FunctionImport Name="CityInsert" ReturnType="Collection(Decimal)">
+      <Parameter Name="CityCode" Mode="In" Type="String" />
+      <Parameter Name="CityName" Mode="In" Type="String" />
+      <Parameter Name="CityNameArabic" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RouteInsert" ReturnType="Collection(Int32)">
+      <Parameter Name="RoutCode" Mode="In" Type="String" />
+      <Parameter Name="From" Mode="In" Type="String" />
+      <Parameter Name="To" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="DescriptionInArabic" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RouteSelect" ReturnType="Collection(AdeelaModel.RouteSelect_Result)" />
+    <FunctionImport Name="TicketSelect" ReturnType="Collection(AdeelaModel.TicketSelect_Result)" />
+    <FunctionImport Name="TokenMangerInsert" ReturnType="Collection(Guid)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="DeviceID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserBankAccountInsert" ReturnType="Collection(Decimal)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="Branch" Mode="In" Type="String" />
+      <Parameter Name="BanckAccount" Mode="In" Type="String" />
+      <Parameter Name="AtmCardNo" Mode="In" Type="String" />
+      <Parameter Name="primeryAccount" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UserBankAccountSelect" ReturnType="Collection(AdeelaModel.UserBankAccountSelect_Result)" />
+    <FunctionImport Name="UserSelect" ReturnType="Collection(AdeelaModel.UserSelect_Result)" />
+    <FunctionImport Name="TokenManagerCheckUserValidToken" ReturnType="Collection(AdeelaModel.TokenManagerCheckUserValidToken_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CitySelect" ReturnType="Collection(AdeelaModel.CitySelect_Result)" />
+    <FunctionImport Name="TokenManagerSelectByUserID" ReturnType="Collection(Guid)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TokenManagerSelectByToken" ReturnType="Collection(Int32)">
+      <Parameter Name="Token" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="TicketInsert" ReturnType="Collection(AdeelaModel.TicketInsert_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="AgencyRoutID" Mode="In" Type="Int32" />
+      <Parameter Name="Price" Mode="In" Type="Double" />
+      <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="PaymentBy" Mode="In" Type="String" />
+      <Parameter Name="PayTransactionNo" Mode="In" Type="String" />
+      <Parameter Name="Bank" Mode="In" Type="String" />
+      <Parameter Name="AccountNo" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="UserInsert_Result">
+    <Property Type="Int32" Name="result" Nullable="false" />
+    <Property Type="String" Name="msg" Nullable="false" MaxLength="66" />
+    <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="63" />
+  </ComplexType>
+  <ComplexType Name="AgencyInsert_Result">
+    <Property Type="Int32" Name="result" Nullable="false" />
+    <Property Type="String" Name="mag" Nullable="false" MaxLength="26" />
+    <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="18" />
+  </ComplexType>
+  <ComplexType Name="AgencyRoutSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="AgencyID" Nullable="false" />
+    <Property Type="Int32" Name="RouteID" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="String" Name="TravelTime" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="AvailableTickets" Nullable="false" />
+    <Property Type="Double" Name="Price" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <Property Type="Int32" Name="IssuedTickets" Nullable="false" />
+    <Property Type="String" Name="FromCityCode" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="FromCityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FromCityNameArabic" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="ToCityCode" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="ToCityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ToCityNameArabic" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="RouteSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="RoutCode" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="From" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="To" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="DescriptionInArabic" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="TicketSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="AgencyRoutID" Nullable="false" />
+    <Property Type="Double" Name="Price" Nullable="false" />
+    <Property Type="DateTime" Name="IssueDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="PaymentBy" Nullable="false" />
+    <Property Type="String" Name="PayTransactionNo" Nullable="true" />
+    <Property Type="String" Name="Bank" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="AccountNo" Nullable="true" />
+    <Property Type="String" Name="TicketNo" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserBankAccountSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Bank" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Branch" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="BanckAccount" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="AtmCardNo" Nullable="true" MaxLength="250" />
+    <Property Type="Boolean" Name="primeryAccount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="UserSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="TypeID" Nullable="false" />
+    <Property Type="String" Name="TypeName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="TokenManagerCheckUserValidToken_Result">
+    <Property Type="Int32" Name="result" Nullable="false" />
+    <Property Type="Guid" Name="Token" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CitySelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="CityCode" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CityNameArabic" Nullable="false" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="TicketInsert_Result">
+    <Property Type="Decimal" Name="result" Nullable="true" Precision="38" Scale="0" />
+    <Property Type="String" Name="TicketNo" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

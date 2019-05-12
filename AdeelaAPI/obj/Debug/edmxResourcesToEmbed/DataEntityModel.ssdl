@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdeelaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="AgencyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AgencyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="AgencyNameArabic" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AgencyRouteInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AgencyID" Type="int" Mode="In" />
+    <Parameter Name="RouteID" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="TravelTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="AvailableTickets" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="IssuedTickets" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AgencyRoutSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CityNameArabic" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CitySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RouteInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoutCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="From" Type="nvarchar" Mode="In" />
+    <Parameter Name="To" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DescriptionInArabic" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="RouteSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TicketInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AgencyRoutID" Type="int" Mode="In" />
+    <Parameter Name="Price" Type="float" Mode="In" />
+    <Parameter Name="IssueDate" Type="datetime" Mode="In" />
+    <Parameter Name="PaymentBy" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PayTransactionNo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Bank" Type="nvarchar" Mode="In" />
+    <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="TicketSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TokenManagerCheckUserValidToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TokenManagerSelectByToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Token" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="TokenManagerSelectByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TokenMangerInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="DeviceID" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UserBankAccountInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Bank" Type="nvarchar" Mode="In" />
+    <Parameter Name="Branch" Type="nvarchar" Mode="In" />
+    <Parameter Name="BanckAccount" Type="nvarchar" Mode="In" />
+    <Parameter Name="AtmCardNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="primeryAccount" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UserBankAccountSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="TypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UserLoginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UserSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UserUpdateType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="TypeID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="AdeelaModelStoreContainer" />
+</Schema>

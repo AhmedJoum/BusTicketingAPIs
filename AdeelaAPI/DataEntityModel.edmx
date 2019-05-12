@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdeelaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AgencyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AgencyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="AgencyNameArabic" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AgencyRouteInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AgencyID" Type="int" Mode="In" />
+          <Parameter Name="RouteID" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="TravelTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="AvailableTickets" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IssuedTickets" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgencyRoutSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CityNameArabic" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CitySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RouteInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoutCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="From" Type="nvarchar" Mode="In" />
+          <Parameter Name="To" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DescriptionInArabic" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RouteSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TicketInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="AgencyRoutID" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="IssueDate" Type="datetime" Mode="In" />
+          <Parameter Name="PaymentBy" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PayTransactionNo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Bank" Type="nvarchar" Mode="In" />
+          <Parameter Name="AccountNo" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TicketSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TokenManagerCheckUserValidToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TokenManagerSelectByToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Token" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="TokenManagerSelectByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TokenMangerInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="DeviceID" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UserBankAccountInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Bank" Type="nvarchar" Mode="In" />
+          <Parameter Name="Branch" Type="nvarchar" Mode="In" />
+          <Parameter Name="BanckAccount" Type="nvarchar" Mode="In" />
+          <Parameter Name="AtmCardNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="primeryAccount" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UserBankAccountSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="TypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UserLoginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UserSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UserUpdateType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="TypeID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AdeelaModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdeelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AdeelaEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="UserInsert" ReturnType="Collection(AdeelaModel.UserInsert_Result)">
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="TypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserLoginCheck" ReturnType="Collection(Int32)">
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserUpdateType">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="TypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserLogin" ReturnType="Collection(Int32)">
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgencyInsert" ReturnType="Collection(AdeelaModel.AgencyInsert_Result)">
+            <Parameter Name="AgencyName" Mode="In" Type="String" />
+            <Parameter Name="AgencyNameArabic" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgencyRouteInsert" ReturnType="Collection(Decimal)">
+            <Parameter Name="AgencyID" Mode="In" Type="Int32" />
+            <Parameter Name="RouteID" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="TravelTime" Mode="In" Type="String" />
+            <Parameter Name="AvailableTickets" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="IssuedTickets" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AgencyRoutSelect" ReturnType="Collection(AdeelaModel.AgencyRoutSelect_Result)" />
+          <FunctionImport Name="CityInsert" ReturnType="Collection(Decimal)">
+            <Parameter Name="CityCode" Mode="In" Type="String" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="CityNameArabic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RouteInsert" ReturnType="Collection(Int32)">
+            <Parameter Name="RoutCode" Mode="In" Type="String" />
+            <Parameter Name="From" Mode="In" Type="String" />
+            <Parameter Name="To" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="DescriptionInArabic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RouteSelect" ReturnType="Collection(AdeelaModel.RouteSelect_Result)" />
+          <FunctionImport Name="TicketSelect" ReturnType="Collection(AdeelaModel.TicketSelect_Result)" />
+          <FunctionImport Name="TokenMangerInsert" ReturnType="Collection(Guid)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="DeviceID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserBankAccountInsert" ReturnType="Collection(Decimal)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Bank" Mode="In" Type="String" />
+            <Parameter Name="Branch" Mode="In" Type="String" />
+            <Parameter Name="BanckAccount" Mode="In" Type="String" />
+            <Parameter Name="AtmCardNo" Mode="In" Type="String" />
+            <Parameter Name="primeryAccount" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UserBankAccountSelect" ReturnType="Collection(AdeelaModel.UserBankAccountSelect_Result)" />
+          <FunctionImport Name="UserSelect" ReturnType="Collection(AdeelaModel.UserSelect_Result)" />
+          <FunctionImport Name="TokenManagerCheckUserValidToken" ReturnType="Collection(AdeelaModel.TokenManagerCheckUserValidToken_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CitySelect" ReturnType="Collection(AdeelaModel.CitySelect_Result)" />
+          <FunctionImport Name="TokenManagerSelectByUserID" ReturnType="Collection(Guid)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TokenManagerSelectByToken" ReturnType="Collection(Int32)">
+          <Parameter Name="Token" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="TicketInsert" ReturnType="Collection(AdeelaModel.TicketInsert_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="AgencyRoutID" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PaymentBy" Mode="In" Type="String" />
+            <Parameter Name="PayTransactionNo" Mode="In" Type="String" />
+            <Parameter Name="Bank" Mode="In" Type="String" />
+            <Parameter Name="AccountNo" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="UserInsert_Result">
+          <Property Type="Int32" Name="result" Nullable="false" />
+          <Property Type="String" Name="msg" Nullable="false" MaxLength="66" />
+          <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="63" />
+        </ComplexType>
+        <ComplexType Name="AgencyInsert_Result">
+          <Property Type="Int32" Name="result" Nullable="false" />
+          <Property Type="String" Name="mag" Nullable="false" MaxLength="26" />
+          <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="18" />
+        </ComplexType>
+        <ComplexType Name="AgencyRoutSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="AgencyID" Nullable="false" />
+          <Property Type="Int32" Name="RouteID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TravelTime" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AvailableTickets" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="Int32" Name="IssuedTickets" Nullable="false" />
+          <Property Type="String" Name="FromCityCode" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="FromCityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FromCityNameArabic" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ToCityCode" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="ToCityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToCityNameArabic" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="RouteSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RoutCode" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="From" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="To" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="DescriptionInArabic" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TicketSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="AgencyRoutID" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="DateTime" Name="IssueDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PaymentBy" Nullable="false" />
+          <Property Type="String" Name="PayTransactionNo" Nullable="true" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AccountNo" Nullable="true" />
+          <Property Type="String" Name="TicketNo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UserBankAccountSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Branch" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BanckAccount" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AtmCardNo" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="primeryAccount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UserSelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="TypeID" Nullable="false" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="TokenManagerCheckUserValidToken_Result">
+          <Property Type="Int32" Name="result" Nullable="false" />
+          <Property Type="Guid" Name="Token" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CitySelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityCode" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CityNameArabic" Nullable="false" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="TicketInsert_Result">
+          <Property Type="Decimal" Name="result" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="String" Name="TicketNo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdeelaModelStoreContainer" CdmEntityContainer="AdeelaEntities" >
+          <FunctionImportMapping FunctionImportName="UserInsert" FunctionName="AdeelaModel.Store.UserInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.UserInsert_Result">
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="msgArabic" ColumnName="msgArabic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UserLoginCheck" FunctionName="AdeelaModel.Store.UserLoginCheck" />
+          <FunctionImportMapping FunctionImportName="UserUpdateType" FunctionName="AdeelaModel.Store.UserUpdateType" />
+          <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="AdeelaModel.Store.UserLogin" />
+          <FunctionImportMapping FunctionImportName="AgencyInsert" FunctionName="AdeelaModel.Store.AgencyInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.AgencyInsert_Result">
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="mag" ColumnName="mag" />
+                <ScalarProperty Name="msgArabic" ColumnName="msgArabic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgencyRouteInsert" FunctionName="AdeelaModel.Store.AgencyRouteInsert" />
+          <FunctionImportMapping FunctionImportName="AgencyRoutSelect" FunctionName="AdeelaModel.Store.AgencyRoutSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.AgencyRoutSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+                <ScalarProperty Name="AvailableTickets" ColumnName="AvailableTickets" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IssuedTickets" ColumnName="IssuedTickets" />
+                <ScalarProperty Name="FromCityCode" ColumnName="FromCityCode" />
+                <ScalarProperty Name="FromCityName" ColumnName="FromCityName" />
+                <ScalarProperty Name="FromCityNameArabic" ColumnName="FromCityNameArabic" />
+                <ScalarProperty Name="ToCityCode" ColumnName="ToCityCode" />
+                <ScalarProperty Name="ToCityName" ColumnName="ToCityName" />
+                <ScalarProperty Name="ToCityNameArabic" ColumnName="ToCityNameArabic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CityInsert" FunctionName="AdeelaModel.Store.CityInsert" />
+          <FunctionImportMapping FunctionImportName="RouteInsert" FunctionName="AdeelaModel.Store.RouteInsert" />
+          <FunctionImportMapping FunctionImportName="RouteSelect" FunctionName="AdeelaModel.Store.RouteSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.RouteSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoutCode" ColumnName="RoutCode" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionInArabic" ColumnName="DescriptionInArabic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TicketSelect" FunctionName="AdeelaModel.Store.TicketSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.TicketSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AgencyRoutID" ColumnName="AgencyRoutID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="PaymentBy" ColumnName="PaymentBy" />
+                <ScalarProperty Name="PayTransactionNo" ColumnName="PayTransactionNo" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TokenMangerInsert" FunctionName="AdeelaModel.Store.TokenMangerInsert" />
+          <FunctionImportMapping FunctionImportName="UserBankAccountInsert" FunctionName="AdeelaModel.Store.UserBankAccountInsert" />
+          <FunctionImportMapping FunctionImportName="UserBankAccountSelect" FunctionName="AdeelaModel.Store.UserBankAccountSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.UserBankAccountSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="BanckAccount" ColumnName="BanckAccount" />
+                <ScalarProperty Name="AtmCardNo" ColumnName="AtmCardNo" />
+                <ScalarProperty Name="primeryAccount" ColumnName="primeryAccount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UserSelect" FunctionName="AdeelaModel.Store.UserSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.UserSelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TokenManagerCheckUserValidToken" FunctionName="AdeelaModel.Store.TokenManagerCheckUserValidToken">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.TokenManagerCheckUserValidToken_Result">
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CitySelect" FunctionName="AdeelaModel.Store.CitySelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.CitySelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityNameArabic" ColumnName="CityNameArabic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TokenManagerSelectByUserID" FunctionName="AdeelaModel.Store.TokenManagerSelectByUserID" />
+          <FunctionImportMapping FunctionImportName="TokenManagerSelectByToken" FunctionName="AdeelaModel.Store.TokenManagerSelectByToken" />
+          <FunctionImportMapping FunctionImportName="TicketInsert" FunctionName="AdeelaModel.Store.TicketInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.TicketInsert_Result">
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

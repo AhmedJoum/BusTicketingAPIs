@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdeelaModelStoreContainer" CdmEntityContainer="AdeelaEntities">
+    <FunctionImportMapping FunctionImportName="UserInsert" FunctionName="AdeelaModel.Store.UserInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.UserInsert_Result">
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="msgArabic" ColumnName="msgArabic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserLoginCheck" FunctionName="AdeelaModel.Store.UserLoginCheck" />
+    <FunctionImportMapping FunctionImportName="UserUpdateType" FunctionName="AdeelaModel.Store.UserUpdateType" />
+    <FunctionImportMapping FunctionImportName="UserLogin" FunctionName="AdeelaModel.Store.UserLogin" />
+    <FunctionImportMapping FunctionImportName="AgencyInsert" FunctionName="AdeelaModel.Store.AgencyInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.AgencyInsert_Result">
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="mag" ColumnName="mag" />
+          <ScalarProperty Name="msgArabic" ColumnName="msgArabic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AgencyRouteInsert" FunctionName="AdeelaModel.Store.AgencyRouteInsert" />
+    <FunctionImportMapping FunctionImportName="AgencyRoutSelect" FunctionName="AdeelaModel.Store.AgencyRoutSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.AgencyRoutSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+          <ScalarProperty Name="AvailableTickets" ColumnName="AvailableTickets" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IssuedTickets" ColumnName="IssuedTickets" />
+          <ScalarProperty Name="FromCityCode" ColumnName="FromCityCode" />
+          <ScalarProperty Name="FromCityName" ColumnName="FromCityName" />
+          <ScalarProperty Name="FromCityNameArabic" ColumnName="FromCityNameArabic" />
+          <ScalarProperty Name="ToCityCode" ColumnName="ToCityCode" />
+          <ScalarProperty Name="ToCityName" ColumnName="ToCityName" />
+          <ScalarProperty Name="ToCityNameArabic" ColumnName="ToCityNameArabic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CityInsert" FunctionName="AdeelaModel.Store.CityInsert" />
+    <FunctionImportMapping FunctionImportName="RouteInsert" FunctionName="AdeelaModel.Store.RouteInsert" />
+    <FunctionImportMapping FunctionImportName="RouteSelect" FunctionName="AdeelaModel.Store.RouteSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.RouteSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoutCode" ColumnName="RoutCode" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionInArabic" ColumnName="DescriptionInArabic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TicketSelect" FunctionName="AdeelaModel.Store.TicketSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.TicketSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AgencyRoutID" ColumnName="AgencyRoutID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="PaymentBy" ColumnName="PaymentBy" />
+          <ScalarProperty Name="PayTransactionNo" ColumnName="PayTransactionNo" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TokenMangerInsert" FunctionName="AdeelaModel.Store.TokenMangerInsert" />
+    <FunctionImportMapping FunctionImportName="UserBankAccountInsert" FunctionName="AdeelaModel.Store.UserBankAccountInsert" />
+    <FunctionImportMapping FunctionImportName="UserBankAccountSelect" FunctionName="AdeelaModel.Store.UserBankAccountSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.UserBankAccountSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="BanckAccount" ColumnName="BanckAccount" />
+          <ScalarProperty Name="AtmCardNo" ColumnName="AtmCardNo" />
+          <ScalarProperty Name="primeryAccount" ColumnName="primeryAccount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserSelect" FunctionName="AdeelaModel.Store.UserSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.UserSelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TokenManagerCheckUserValidToken" FunctionName="AdeelaModel.Store.TokenManagerCheckUserValidToken">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.TokenManagerCheckUserValidToken_Result">
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CitySelect" FunctionName="AdeelaModel.Store.CitySelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.CitySelect_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityNameArabic" ColumnName="CityNameArabic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TokenManagerSelectByUserID" FunctionName="AdeelaModel.Store.TokenManagerSelectByUserID" />
+    <FunctionImportMapping FunctionImportName="TokenManagerSelectByToken" FunctionName="AdeelaModel.Store.TokenManagerSelectByToken" />
+    <FunctionImportMapping FunctionImportName="TicketInsert" FunctionName="AdeelaModel.Store.TicketInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdeelaModel.TicketInsert_Result">
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
