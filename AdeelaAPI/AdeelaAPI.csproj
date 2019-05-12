@@ -169,6 +169,7 @@
     <Compile Include="CitySelect_Result.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
