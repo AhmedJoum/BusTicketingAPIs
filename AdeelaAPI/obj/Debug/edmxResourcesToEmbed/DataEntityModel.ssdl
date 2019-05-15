@@ -15,9 +15,9 @@
     <Parameter Name="AvailableTickets" Type="int" Mode="In" />
     <Parameter Name="Price" Type="float" Mode="In" />
     <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="IssuedTickets" Type="int" Mode="In" />
   </Function>
   <Function Name="AgencyRoutSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AgencySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="CityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CityCode" Type="nvarchar" Mode="In" />
     <Parameter Name="CityName" Type="nvarchar" Mode="In" />

@@ -27,6 +27,40 @@ namespace AdeelaAPI.Models
             }
         }
 
+
+
+        public int AgencyID { get; set; }
+
+        public Route Route { get; set; }
+
+        internal object GetAllAgencies()
+        {
+            try
+            {
+                List<AgencySelect_Result> result = Context.AgencySelect().ToList();
+                return new { Status = 1, Agencies = result };
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnModelMethodeException(ex);
+            }
+        }
+
+        internal object GetAgencyByID()
+        {
+            try
+            {
+                IEnumerable<AgencySelect_Result> result = Context.AgencySelect().Where(a => a.ID == this.AgencyID);
+                return new { Status = 1, Agency = result };
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnModelMethodeException(ex);
+            }
+        }
+
+
+
         internal object GetAvailableRoutes()
         {
             try
@@ -37,7 +71,35 @@ namespace AdeelaAPI.Models
             catch (Exception ex)
             {
 
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
+            }
+        }
+
+
+        internal object GetAgencySoldTickets(Agency agency)
+        {
+            try
+            {
+                IEnumerable<TicketSelect_Result> result = Context.TicketSelect().Where(t => t.AgencyRoutID == agency.AgencyID);
+                return new { Status = 1, Tickects = result };
+            }
+            catch (Exception ex)
+            {
+
+                return ExcptionHandler.OnModelMethodeException(ex);
+            }
+        }
+
+        internal object GetUserAgencies()
+        {
+            try
+            {
+                var result = Context.AgencySelect().Where(a => a.UserID == this.UserID);
+                return new { Status = 1, Agencies = result }; 
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
     }

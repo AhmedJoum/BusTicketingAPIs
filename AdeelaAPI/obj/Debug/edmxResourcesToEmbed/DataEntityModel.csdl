@@ -35,7 +35,6 @@
       <Parameter Name="AvailableTickets" Mode="In" Type="Int32" />
       <Parameter Name="Price" Mode="In" Type="Double" />
       <Parameter Name="Description" Mode="In" Type="String" />
-      <Parameter Name="IssuedTickets" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="AgencyRoutSelect" ReturnType="Collection(AdeelaModel.AgencyRoutSelect_Result)" />
     <FunctionImport Name="CityInsert" ReturnType="Collection(Decimal)">
@@ -87,11 +86,12 @@
       <Parameter Name="Bank" Mode="In" Type="String" />
       <Parameter Name="AccountNo" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="AgencySelect" ReturnType="Collection(AdeelaModel.AgencySelect_Result)" />
   </EntityContainer>
   <ComplexType Name="UserInsert_Result">
     <Property Type="Int32" Name="result" Nullable="false" />
-    <Property Type="String" Name="msg" Nullable="false" MaxLength="66" />
-    <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="63" />
+    <Property Type="String" Name="Msg" Nullable="false" MaxLength="66" />
+    <Property Type="String" Name="MsgArabic" Nullable="false" MaxLength="61" />
   </ComplexType>
   <ComplexType Name="AgencyInsert_Result">
     <Property Type="Int32" Name="result" Nullable="false" />
@@ -166,5 +166,13 @@
   <ComplexType Name="TicketInsert_Result">
     <Property Type="Decimal" Name="result" Nullable="true" Precision="38" Scale="0" />
     <Property Type="String" Name="TicketNo" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="AgencySelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="AgencyName" Nullable="false" />
+    <Property Type="String" Name="AgencyNameArabic" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

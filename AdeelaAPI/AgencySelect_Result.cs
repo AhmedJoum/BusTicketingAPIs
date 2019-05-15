@@ -11,10 +11,13 @@ namespace AdeelaAPI
 {
     using System;
     
-    public partial class UserInsert_Result
+    public partial class AgencySelect_Result
     {
-        public int result { get; set; }
-        public string Msg { get; set; }
-        public string MsgArabic { get; set; }
+        public int ID { get; set; }
+        public string AgencyName { get; set; }
+        public string AgencyNameArabic { get; set; }
+        public int UserID { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
     }
 }

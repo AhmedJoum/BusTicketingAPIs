@@ -35,23 +35,6 @@ namespace AdeelaAPI.Models
         public string Bank { get; set; }
         public string AccountNo { get; set; }
 
-
-
-        internal object GetAllRoutes()
-        {
-            try
-            {
-                List<AgencyRoutSelect_Result> result = Context.AgencyRoutSelect().ToList();
-                return new { Status = 0, Routes = result };
-            }
-            catch (Exception ex)
-            {
-
-                return ExcptionHandler.OnException(ex);
-            }
-        }
-
-
         internal object IssueTicket()
         {
             try
@@ -69,7 +52,7 @@ namespace AdeelaAPI.Models
             }
             catch (Exception ex)
             {
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
 

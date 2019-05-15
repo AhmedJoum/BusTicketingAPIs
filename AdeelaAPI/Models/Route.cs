@@ -43,26 +43,29 @@ namespace AdeelaAPI.Models
         public string ToCityCode { get; set; } = "";
         public string ToCityName { get; set; } = "";
         public string ToCityNameArabic { get; set; } = "";
+        public int IssuedTickets { get; set; }
+
+       
 
 
-        internal object GetRoutesByFilter()
+        internal object GetBusRoutesByFilter()
         {
             try
             {
-                List<AgencyRoutSelect_Result> result = Context.AgencyRoutSelect().ToList();
+               List<AgencyRoutSelect_Result> FilterResult = Context.AgencyRoutSelect().ToList();
 
-                result = FilterRoutesByFromCityCode(result);
-                result = FilterRouteByToCityCode(result);
-                result = FilterRoutesByAgencyID(result);
-                result = FilterRouteByDate(result);
+                FilterResult = FilterRoutesByFromCityCode(FilterResult);
+                FilterResult = FilterRouteByToCityCode(FilterResult);
+                FilterResult = FilterRoutesByAgencyID(FilterResult);
+                FilterResult = FilterRouteByDate(FilterResult);
 
-                return new { Status = 1, Routes = result };
+                return new { Status = 1, Routes = FilterResult };
 
             }
             catch (Exception ex)
             {
 
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
 
@@ -109,5 +112,26 @@ namespace AdeelaAPI.Models
         }
 
         #endregion
+
+        internal object AddAgencyRoute()
+        {
+            try
+            {
+                System.Data.Objects.ObjectResult<decimal?> result = Context.AgencyRouteInsert(this.AgencyID,
+                    this.RouteID,
+                    this.Date,
+                    this.TravilTime,
+                    this.AvailableTickets,
+                    this.Price,
+                    this.Description);
+
+                return new { Status = 1, RouteID = result };
+            }
+            catch (Exception ex)
+            {
+
+                return ExcptionHandler.OnModelMethodeException(ex);
+            }
+        }
     }
 }

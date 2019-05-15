@@ -118,7 +118,7 @@ namespace AdeelaAPI
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgencyInsert_Result>("AgencyInsert", agencyNameParameter, agencyNameArabicParameter, userIDParameter, addressParameter, phoneParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> AgencyRouteInsert(Nullable<int> agencyID, Nullable<int> routeID, Nullable<System.DateTime> date, string travelTime, Nullable<int> availableTickets, Nullable<double> price, string description, Nullable<int> issuedTickets)
+        public virtual ObjectResult<Nullable<decimal>> AgencyRouteInsert(Nullable<int> agencyID, Nullable<int> routeID, Nullable<System.DateTime> date, string travelTime, Nullable<int> availableTickets, Nullable<double> price, string description)
         {
             var agencyIDParameter = agencyID.HasValue ?
                 new ObjectParameter("AgencyID", agencyID) :
@@ -148,11 +148,7 @@ namespace AdeelaAPI
                 new ObjectParameter("Description", description) :
                 new ObjectParameter("Description", typeof(string));
     
-            var issuedTicketsParameter = issuedTickets.HasValue ?
-                new ObjectParameter("IssuedTickets", issuedTickets) :
-                new ObjectParameter("IssuedTickets", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AgencyRouteInsert", agencyIDParameter, routeIDParameter, dateParameter, travelTimeParameter, availableTicketsParameter, priceParameter, descriptionParameter, issuedTicketsParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AgencyRouteInsert", agencyIDParameter, routeIDParameter, dateParameter, travelTimeParameter, availableTicketsParameter, priceParameter, descriptionParameter);
         }
     
         public virtual ObjectResult<AgencyRoutSelect_Result> AgencyRoutSelect()
@@ -335,6 +331,11 @@ namespace AdeelaAPI
                 new ObjectParameter("AccountNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TicketInsert_Result>("TicketInsert", userIDParameter, agencyRoutIDParameter, priceParameter, issueDateParameter, paymentByParameter, payTransactionNoParameter, bankParameter, accountNoParameter);
+        }
+    
+        public virtual ObjectResult<AgencySelect_Result> AgencySelect()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AgencySelect_Result>("AgencySelect");
         }
     }
 }

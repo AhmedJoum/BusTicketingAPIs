@@ -1,6 +1,7 @@
 ﻿using AdeelaAPI.Filters;
 using AdeelaAPI.Models;
 using AdeelaAPI.Utils;
+using System;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -23,9 +24,17 @@ namespace AdeelaAPI.Controllers
 
         public HttpResponseMessage Get()
         {
-            object result = Model.GetAllCities();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg;
+            try
+            {
+                object result = Model.GetAllCities();
+                HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
         }
 
 
@@ -33,9 +42,18 @@ namespace AdeelaAPI.Controllers
         [HttpPost]
         public HttpResponseMessage PostNewCityDetails([FromBody] City city)
         {
-            object result = city.CreateNewCity();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg;
+            try
+            {
+                object result = city.CreateNewCity();
+                HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+         
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
         }
     }
 }

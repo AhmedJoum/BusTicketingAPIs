@@ -40,7 +40,7 @@ namespace AdeelaAPI.Models
             }
             catch (Exception ex)
             {
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
 
@@ -54,7 +54,7 @@ namespace AdeelaAPI.Models
             catch (Exception ex)
             {
 
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
     }

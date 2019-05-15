@@ -1,6 +1,7 @@
 ﻿using AdeelaAPI.Filters;
 using AdeelaAPI.Models;
 using AdeelaAPI.Utils;
+using System;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -10,7 +11,7 @@ namespace AdeelaAPI.Controllers
     [UserAuthorize]
     public class AgencyController : ApiController
     {
-        private readonly ResponseFactory respFactory = new ResponseFactory();
+        private readonly ResponseFactory responceFactory = new ResponseFactory();
         public Agency Model
         {
             get
@@ -19,21 +20,122 @@ namespace AdeelaAPI.Controllers
                 return obj;
             }
         }
-        // get all avilable routes 
+
+        [HttpGet]
+        public HttpResponseMessage Get()
+        {
+            try
+            {
+                var result = Model.GetAllAgencies();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+        }
+
+        [ActionName("Details")]
+        [HttpPost]
+        public HttpResponseMessage GetAgencyDetails([FromBody] Agency agency)
+        {
+            try
+            {
+                var result = agency.GetAgencyByID();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+        }
 
         [ActionName("AvilableRoutes")]
         [HttpGet]
         public HttpResponseMessage GetAvailableRoutes()
         {
-            var result = Model.GetAvailableRoutes();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg; 
+            try
+            {
+                object result = Model.GetAvailableRoutes();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
         }
-        //add a agency route
 
-        // get all agency routes by Agency ID 
 
-        // get all tickets with basic user info the Agency route by its ID.
+
+        [ActionName("AddBusRoute")]
+        [HttpPost]
+        public HttpResponseMessage PostAgencyRout([FromBody] Route route)
+        {
+            try
+            {
+                var result = route.AddAgencyRoute();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
+        }
+
+        [ActionName("MyBusRoutes")]
+        [HttpPost]
+        public HttpResponseMessage GetAgencyRoutes([FromBody] Route agencyRoute)
+        {
+            try
+            {
+                var result = agencyRoute.GetBusRoutesByFilter();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
+        }
+
+        [ActionName("MySoldTickets")]
+        [HttpPost]
+        public HttpResponseMessage GetAgencySoldTickets([FromBody] Agency agency)
+        {
+            try
+            {
+                var result = Model.GetAgencySoldTickets(agency);
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+        }
+
+        [ActionName("MyAgencies")]
+        [HttpGet]
+        public HttpResponseMessage GetUserAgencies()
+        {
+            try
+            {
+                var result = Model.GetUserAgencies();
+                HttpResponseMessage msg = responceFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+        }
 
 
     }

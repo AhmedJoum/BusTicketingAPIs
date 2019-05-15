@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading;
-using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
@@ -21,26 +19,30 @@ namespace AdeelaAPI.Filters
             try
             {
                 string actionName = actionContext.ActionDescriptor.ActionName;
-                if (actionName.Equals("Login"))
+                bool IsActionsWithOutValidation = actionName.Equals("Login") || actionName.Equals("SignUp");
+                if (IsActionsWithOutValidation)
+                {
                     return;
-
+                }
 
                 if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                {
                     return;
+                }
 
-                var authHeader = actionContext.Request.Headers.Authorization;
+                System.Net.Http.Headers.AuthenticationHeaderValue authHeader = actionContext.Request.Headers.Authorization;
                 if (authHeader != null)
                 {
                     if (authHeader.Scheme.Equals("basic", StringComparison.OrdinalIgnoreCase))
                     {
                         if (!string.IsNullOrWhiteSpace(authHeader.Parameter))
                         {
-                            var TokenKey = authHeader.Parameter;
+                            string TokenKey = authHeader.Parameter;
                             int? UserID = Context.TokenManagerSelectByToken(Guid.Parse(TokenKey)).First();
 
                             if (UserID != 0)
                             {
-                                var principal = new GenericPrincipal(new GenericIdentity(UserID.ToString()), null);
+                                GenericPrincipal principal = new GenericPrincipal(new GenericIdentity(UserID.ToString()), null);
                                 Thread.CurrentPrincipal = principal;
                                 return;
                             }
@@ -59,7 +61,7 @@ namespace AdeelaAPI.Filters
             HandleUnauthorized(actionContext);
         }
 
-        void HandleUnauthorized(HttpActionContext actionContext)
+        private void HandleUnauthorized(HttpActionContext actionContext)
         {
             actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, NotValidEmpObj);
             actionContext.Response.Headers.Add("WWW-Authenticate", "Basic Scheme='HrApi' location='User/login'");

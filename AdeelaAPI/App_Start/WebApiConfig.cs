@@ -16,9 +16,15 @@ namespace AdeelaAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+               name: "ApiWithAction",
+               routeTemplate: "{controller}/{action}",
+               defaults: new { id = RouteParameter.Optional }
+           );
         }
     }
 }

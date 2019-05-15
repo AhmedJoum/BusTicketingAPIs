@@ -20,9 +20,9 @@
           <Parameter Name="AvailableTickets" Type="int" Mode="In" />
           <Parameter Name="Price" Type="float" Mode="In" />
           <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="IssuedTickets" Type="int" Mode="In" />
         </Function>
         <Function Name="AgencyRoutSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AgencySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CityCode" Type="nvarchar" Mode="In" />
           <Parameter Name="CityName" Type="nvarchar" Mode="In" />
@@ -131,7 +131,6 @@
             <Parameter Name="AvailableTickets" Mode="In" Type="Int32" />
             <Parameter Name="Price" Mode="In" Type="Double" />
             <Parameter Name="Description" Mode="In" Type="String" />
-            <Parameter Name="IssuedTickets" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AgencyRoutSelect" ReturnType="Collection(AdeelaModel.AgencyRoutSelect_Result)" />
           <FunctionImport Name="CityInsert" ReturnType="Collection(Decimal)">
@@ -183,12 +182,13 @@
             <Parameter Name="Bank" Mode="In" Type="String" />
             <Parameter Name="AccountNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AgencySelect" ReturnType="Collection(AdeelaModel.AgencySelect_Result)" />
         </EntityContainer>
         <ComplexType Name="UserInsert_Result">
           <Property Type="Int32" Name="result" Nullable="false" />
-          <Property Type="String" Name="msg" Nullable="false" MaxLength="66" />
-          <Property Type="String" Name="msgArabic" Nullable="false" MaxLength="63" />
-        </ComplexType>
+          <Property Type="String" Name="Msg" Nullable="false" MaxLength="66" />
+          <Property Type="String" Name="MsgArabic" Nullable="false" MaxLength="61" />
+          </ComplexType>
         <ComplexType Name="AgencyInsert_Result">
           <Property Type="Int32" Name="result" Nullable="false" />
           <Property Type="String" Name="mag" Nullable="false" MaxLength="26" />
@@ -263,6 +263,14 @@
           <Property Type="Decimal" Name="result" Nullable="true" Precision="38" Scale="0" />
           <Property Type="String" Name="TicketNo" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="AgencySelect_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AgencyName" Nullable="false" />
+          <Property Type="String" Name="AgencyNameArabic" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -273,9 +281,9 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="AdeelaModel.UserInsert_Result">
                 <ScalarProperty Name="result" ColumnName="result" />
-                <ScalarProperty Name="msg" ColumnName="msg" />
-                <ScalarProperty Name="msgArabic" ColumnName="msgArabic" />
-              </ComplexTypeMapping>
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="MsgArabic" ColumnName="MsgArabic" />
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserLoginCheck" FunctionName="AdeelaModel.Store.UserLoginCheck" />
@@ -395,6 +403,18 @@
               <ComplexTypeMapping TypeName="AdeelaModel.TicketInsert_Result">
                 <ScalarProperty Name="result" ColumnName="result" />
                 <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgencySelect" FunctionName="AdeelaModel.Store.AgencySelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdeelaModel.AgencySelect_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+                <ScalarProperty Name="AgencyNameArabic" ColumnName="AgencyNameArabic" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

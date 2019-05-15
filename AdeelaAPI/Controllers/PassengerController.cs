@@ -1,6 +1,7 @@
 ﻿using AdeelaAPI.Filters;
 using AdeelaAPI.Models;
 using AdeelaAPI.Utils;
+using System;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -12,7 +13,7 @@ namespace AdeelaAPI.Controllers
 
         private ResponseFactory respFactory = new ResponseFactory();
 
-        public Passenger Model
+        public Passenger PassengerModel
         {
             get
             {
@@ -21,32 +22,65 @@ namespace AdeelaAPI.Controllers
             }
         }
 
+        public Route RouteModel
+        {
+            get
+            {
+                Route obj = new Route();
+                return obj;
+            }
+        }
 
-        [ActionName("AllRoutes")]
+
+        [ActionName("AllBusRoutes")]
         [HttpGet]
         public HttpResponseMessage GetAllRoutes()
         {
-            object result = Model.GetAllRoutes();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg;
+            try
+            {
+                object result = RouteModel.GetBusRoutesByFilter();
+                HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+
         }
 
-        [ActionName("RouteFilter")]
+        [ActionName("BusRouteFilter")]
         [HttpPost]
         public HttpResponseMessage GetRoutesByFilter([FromBody]Route route)
         {
-            object result = route.GetRoutesByFilter();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg;
+            try
+            {
+                object result = route.GetBusRoutesByFilter();
+                HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+           
         }
 
         [ActionName("IssueTicket")]
         [HttpPost]
         public HttpResponseMessage PostIssuedTicket([FromBody]Passenger passenger)
         {
-            object result = passenger.IssueTicket();
-            HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
-            return msg;
+            try
+            {
+                object result = passenger.IssueTicket();
+                HttpResponseMessage msg = respFactory.GetResponseMsg(Request, result);
+                return msg;
+            }
+            catch (Exception ex)
+            {
+                return ExcptionHandler.OnActionException(Request, ex);
+            }
+           
         }
 
     }

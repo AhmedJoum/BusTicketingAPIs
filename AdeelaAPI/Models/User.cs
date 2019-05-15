@@ -21,7 +21,7 @@ namespace AdeelaAPI.Models
         public string TypeName { get; set; }
         public string DeviceID { get; set; }
         public Guid? Token { get; set; }
-
+        public string Email { get; set; }
 
         internal object UserLogin()
         {
@@ -44,8 +44,11 @@ namespace AdeelaAPI.Models
             }
             catch (Exception ex)
             {
+#if DEBUG
+                throw ex;
+#endif
 
-                return ExcptionHandler.OnException(ex);
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
 
@@ -90,6 +93,26 @@ namespace AdeelaAPI.Models
             {
 
                 throw;
+            }
+        }
+
+
+        internal object UserSignUp()
+        {
+            try
+            {
+                UserInsert_Result result = Context.UserInsert(this.FullName,
+                    this.Email,
+                    this.Phone,
+                    this.Password,
+                    this.TypeID).FirstOrDefault();
+
+                return new { Status = 1, UserID = result.result, result.Msg, result.MsgArabic };
+            }
+            catch (Exception ex)
+            {
+
+                return ExcptionHandler.OnModelMethodeException(ex);
             }
         }
     }

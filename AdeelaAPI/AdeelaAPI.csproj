@@ -134,6 +134,9 @@
     <Compile Include="AgencyRoutSelect_Result.cs">
       <DependentUpon>DataEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AgencySelect_Result.cs">
+      <DependentUpon>DataEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -174,8 +177,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
+    <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="Models\Route.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
